@@ -1,0 +1,58 @@
+{
+  "name": "image_processor",
+  "version": "1.0.0",
+  "description": "project for the image processing Udacity nanodegree program",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.2",
+    "sharp": "^0.30.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jasmine": "^4.0.0",
+    "@types/node": "^17.0.13",
+    "@types/sharp": "^0.30.0",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jasmine": "^4.0.2",
+    "jasmine-spec-reporter": "^7.0.0",
+    "prettier": "^1.19.1",
+    "supertest": "^6.2.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  },
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "jasmine": "jasmine",
+    "build": "npx tsc",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts)\" && eslint . --ext .ts",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(ts)\"",
+    "lint": "eslint . --ext .ts",
+    "test": "npm run build && npm run jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDLeach/image_processor.git"
+  },
+  "author": "Josh Leach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JDLeach/image_processor/issues"
+  },
+  "homepage": "https://github.com/JDLeach/image_processor#readme",
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "singleQuote": true,
+    "useTabs": true
+  }
+}
