@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import sharp from 'sharp';
 
-export const doesExist = async (path: string) => {
+export const doesExist = async (path: string): Promise<boolean> => {
 	try {
 		await fs.access(path);
 		return true;
@@ -10,7 +10,11 @@ export const doesExist = async (path: string) => {
 	}
 };
 
-export const resizeImage = async (path: string, height = 0, width = 0) => {
+export const resizeImage = async (
+	path: string,
+	height = 0,
+	width = 0
+): Promise<Buffer> => {
 	if (height == 0) {
 		return sharp(path)
 			.resize({ width: width })

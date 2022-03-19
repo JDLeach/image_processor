@@ -20,7 +20,8 @@ const routes = express_1.default.Router();
 routes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.query.filename == undefined) {
         res.status(403);
-        return res.send('Filename missing!');
+        res.send('Filename missing!');
+        return;
     }
     const fileName = req.query.filename + '.jpg';
     // check if the filename supplied exists in the full folder (image uploaded)
@@ -48,13 +49,29 @@ routes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 height = '0';
             if (width == undefined)
                 width = '0';
+            if (isNaN(parseInt(height)) ||
+                parseInt(height) < 0 ||
+                isNaN(parseInt(width)) ||
+                parseInt(width) < 0) {
+                res
+                    .status(500)
+                    .send('Width and/or height paramater is not a positive number. Please check and resubmit');
+                return;
+            }
+            if (height == '0' && width == '0') {
+                res
+                    .status(500)
+                    .send('Width and/or height paramater is not a positive number. Please check and resubmit');
+                return;
+            }
             const image = yield (0, imageProcessing_1.resizeImage)(`assets/thumb/${fileName}`, parseInt(height), parseInt(width));
             res.write(image);
             res.end();
         }
     }
     else {
-        return res.send('File does not exist!');
+        res.send('File does not exist!');
+        return;
     }
 }));
 exports.default = routes;

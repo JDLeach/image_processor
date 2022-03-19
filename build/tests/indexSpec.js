@@ -42,4 +42,12 @@ describe('endpoint tests', () => {
         const response = yield request.get('/image?filename=test');
         expect(response.status).toBe(200);
     }));
+    it('negative number in url throws error', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/image?filename=test&width=-5');
+        expect(response.status).toBe(500);
+    }));
+    it('invalid data as number in url throws error', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/image?filename=test&width=asd');
+        expect(response.status).toBe(500);
+    }));
 });

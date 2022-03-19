@@ -6,7 +6,7 @@ const port = 3000;
 
 app.use('/image', imageRoutes);
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response): void => {
 	res.send('Root path');
 });
 

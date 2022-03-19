@@ -10,7 +10,8 @@ module.exports = {
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
 		'ecmaVersion': 'latest',
-		'sourceType': 'module'
+		'sourceType': 'module',
+		'project': './tsconfig.json'
 	},
 	'plugins': [
 		'@typescript-eslint'
@@ -22,7 +23,7 @@ module.exports = {
 		],
 		'linebreak-style': [
 			'error',
-			'windows'
+			'unix'
 		],
 		'quotes': [
 			'error',
